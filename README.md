@@ -22,7 +22,9 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Run
+
+`rails generate gnotifier:install`
 
 ## Development
 

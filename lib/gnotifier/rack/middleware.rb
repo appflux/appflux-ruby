@@ -11,8 +11,8 @@ module Gnotifier
         begin
           response = @app.call(env)
         rescue Exception => e
-          byebug
           puts 'GNotifying Agent with e, env'
+          ::Gnotifier::BugfluxNotifier.notify(e, env)
           raise e
         end
       end

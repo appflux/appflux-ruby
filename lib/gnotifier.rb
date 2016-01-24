@@ -1,6 +1,8 @@
 # TODO: Rename to appflux
 require 'gnotifier/version'
 require 'gnotifier/bugflux_config'
+require 'gnotifier/bugflux_notifier'
+require 'gnotifier/notice_builder'
 
 if defined?(::Rack)
   require 'gnotifier/rack/middleware'
