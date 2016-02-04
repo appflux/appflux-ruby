@@ -1,19 +1,25 @@
-# TODO: Rename to appflux
-require 'gnotifier/version'
-require 'gnotifier/bugflux_config'
-require 'gnotifier/bugflux_notifier'
-require 'gnotifier/notice_builder'
+require 'byebug'
+require_relative 'gnotifier/version'
+require_relative 'gnotifier/bugflux_config'
+require_relative 'gnotifier/bugflux_notifier'
+require_relative 'gnotifier/notice_builder'
+require_relative 'gnotifier/helpers/util'
 
 if defined?(::Rack)
-  require 'gnotifier/rack/middleware'
+  require_relative 'gnotifier/rack/middleware'
 
-  require 'gnotifier/rails/railtie' if defined?(::Rails)
+  require_relative 'gnotifier/rails/railtie' if defined?(::Rails)
 end
 
 module Gnotifier
   class Bugflux
-    def self.configure
-      yield(Gnotifier::BugfluxConfig.new)
+    class << self
+      attr_accessor :config
+    end
+
+    def self.configure &blk
+      self.config = Gnotifier::BugfluxConfig.new
+      yield self.config
     end
   end
 end

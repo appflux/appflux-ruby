@@ -41,7 +41,7 @@ module Gnotifier
       end
 
       def add_app_id
-        @notice[:bugflux][:app_id] = 
+        # @notice[:bugflux][:app_id] =
       end
   end
 end

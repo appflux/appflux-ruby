@@ -12,6 +12,14 @@ module Gnotifier
           )
         end
       end
+
+      initializer('gnotifier.active_record') do
+        ActiveSupport.on_load(:active_record) do
+          require 'gnotifier/rails/active_record'
+          include Gnotifier::Rails::ActiveRecord
+        end
+      end
+
     end
   end
 end
