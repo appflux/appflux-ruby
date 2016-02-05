@@ -10,10 +10,10 @@ module Gnotifier
       def call(env)
         begin
           response = @app.call(env)
-        rescue Exception => e
-          puts 'GNotifying Agent with e, env'
-          ::Gnotifier::BugfluxNotifier.notify(e, env)
-          raise e
+        rescue Exception => ex
+          puts 'GNotifying Agent with ex, env'
+          ::Gnotifier::BugfluxNotifier.notify(ex, env)
+          raise ex
         end
       end
     end

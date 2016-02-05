@@ -33,3 +33,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'byebug', '~> 8.2'
   spec.add_dependency             'typhoeus', '~> 1.0.1'
 end
+
+
+# require_relative 'lib/gnotifier'
+# Gnotifier::Bugflux
+# Gnotifier::Bugflux.configure {|_c| _c.app_id = '11111'}
