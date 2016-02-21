@@ -27,7 +27,7 @@ module Gnotifier
           super
         rescue Exception => ex
           # TODO: Need to replace with Logger.
-          puts 'GNotifying Agent with ex, env...............'
+          puts 'Sending exception notification to bugflux.'
           ::Gnotifier::BugfluxNotifier.notify(ex)
           raise ex
         end

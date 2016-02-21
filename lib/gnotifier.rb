@@ -11,6 +11,8 @@ if defined?(::Rack)
   require_relative 'gnotifier/rails/railtie' if defined?(::Rails)
 end
 
+require 'gnotifier/delayed_job/plugin' if defined?(::Delayed)
+
 module Gnotifier
   class Bugflux
     class << self

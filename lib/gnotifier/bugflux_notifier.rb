@@ -18,7 +18,6 @@ module Gnotifier
       end
 
       def build_request exception, environment
-        # url = BACKEND_HOST.join('/callbacks')
         notice = Gnotifier::MessageBuilders::Bugflux.new(exception, environment).build
         request = Typhoeus::Request.new(
           ::Gnotifier::Bugflux.config.host,

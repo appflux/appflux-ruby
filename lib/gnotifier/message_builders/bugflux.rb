@@ -1,3 +1,4 @@
+## TODO: Add Rack Env. Current User.
 ##
 # This class builds payload message to send to the backyard application.
 # TODO: This might be Rails specific. Need to check for other Rack based
@@ -5,7 +6,9 @@
 # {
 #   bugflux: {
 #     app_id: '',
-#     environment: {
+#     env: {
+#       app_env: 'staging'
+
 #       request: {
 
 #       },
@@ -45,6 +48,7 @@ module Gnotifier
         add_request_data
         add_params
         add_exception_data
+        add_env
         # add_session_data
 
         @notice
@@ -88,6 +92,10 @@ module Gnotifier
 
         def add_app_id
           @bugflux_notice[:app_id] = ::Gnotifier::Bugflux.config.app_id
+        end
+
+        def add_env
+          @bugflux_notice[:env][:app_env] = ::Rails.env if defined?(::Rails)
         end
     end
   end

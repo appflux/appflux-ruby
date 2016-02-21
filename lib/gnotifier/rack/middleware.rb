@@ -11,7 +11,8 @@ module Gnotifier
         begin
           response = @app.call(env)
         rescue Exception => ex
-          puts 'GNotifying Agent with ex, env'
+          # TODO: Need to figure out a logger implementation.
+          puts 'Sending exception notification to bugflux.'
           ::Gnotifier::BugfluxNotifier.notify(ex, env)
           raise ex
         end
