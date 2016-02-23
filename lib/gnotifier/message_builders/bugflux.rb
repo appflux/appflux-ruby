@@ -49,7 +49,7 @@ module Gnotifier
         add_params
         add_exception_data
         add_env
-        # add_session_data
+        add_session_data
 
         @notice
       end
@@ -79,12 +79,12 @@ module Gnotifier
           end
         end
 
-        # def add_session_data
-        #   @bugflux_notice[:environment] = Hash.new
-        #   ## Iterate over the keys and populate the hash.
+        def add_session_data
+          load_session
+          return unless @session.loaded?
 
-        #   @bugflux_notice[:environment][:session] = @session if @session
-        # end
+          @bugflux_notice[:env][:session]= @request.env['rack.request.cookie_hash']
+        end
 
         def add_params
           @bugflux_notice[:env][:params] = @request.env['action_dispatch.request.parameters']
@@ -97,6 +97,14 @@ module Gnotifier
         def add_env
           @bugflux_notice[:env][:app_env] = ::Rails.env if defined?(::Rails)
         end
+
+        private
+
+          def load_session
+            unless @session.loaded?
+              @session['___bugflux_dummy_key___'] ||= 'bugflux'
+            end
+          end
     end
   end
 end
