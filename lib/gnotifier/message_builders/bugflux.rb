@@ -1,6 +1,8 @@
 ## TODO: Add Rack Env. Current User.
 ##
 # This class builds payload message to send to the backyard application.
+# custom_tabs appear as individual tabs on Bugflux UI and are only set per
+#  exception occurrence.
 # TODO: This might be Rails specific. Need to check for other Rack based
 #  frameworks.
 # {
@@ -22,6 +24,10 @@
 #     exception: {
 
 #     }
+#   },
+#   custom_tabs: {
+#     tab_1: {},
+#     tab_2: {}
 #   }
 # }
 
@@ -50,6 +56,7 @@ module Gnotifier
         add_exception_data
         add_env
         add_session_data
+        add_custom_tabs
 
         @notice
       end
@@ -96,6 +103,10 @@ module Gnotifier
 
         def add_env
           @bugflux_notice[:env][:app_env] = ::Rails.env if defined?(::Rails)
+        end
+
+        def add_custom_tabs
+          @bugflux_notice[:custom_tabs] = ::Gnotifier::Bugflux.additional_data
         end
 
         private

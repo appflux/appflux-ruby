@@ -9,6 +9,7 @@ module Gnotifier
       # Intercepts exception and sends notification to API.
       def call(env)
         begin
+          Gnotifier::Bugflux.initialize_additional_data
           response = @app.call(env)
         rescue Exception => ex
           # TODO: Need to figure out a logger implementation.
