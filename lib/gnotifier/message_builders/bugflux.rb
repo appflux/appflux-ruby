@@ -88,7 +88,7 @@ module Gnotifier
 
         def add_session_data
           load_session
-          return unless @session.loaded?
+          return unless session_loaded?
 
           @bugflux_notice[:env][:session]= @request.env['rack.request.cookie_hash']
         end
@@ -112,9 +112,13 @@ module Gnotifier
         private
 
           def load_session
-            unless @session.loaded?
+            unless session_loaded?
               @session['___bugflux_dummy_key___'] ||= 'bugflux'
             end
+          end
+
+          def session_loaded?
+            @session.respond_to?(:loaded?) ? @session.loaded? : true
           end
     end
   end
