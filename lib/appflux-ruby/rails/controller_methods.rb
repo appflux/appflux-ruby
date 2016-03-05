@@ -1,4 +1,4 @@
-module Gnotifier
+module AppfluxRuby
   module Rails
     module ControllerMethods
       def self.included(base)
@@ -17,7 +17,7 @@ module Gnotifier
           def run_bugflux_callbacks(__methods)
             filtered_methods = __methods.last.is_a?(::Hash) ? __methods.pop : {}
 
-            @@custom_message = Gnotifier::MessageBuilders::CustomMessage.new
+            @@custom_message = AppfluxRuby::MessageBuilders::CustomMessage.new
 
             if respond_to?(:before_action)
               before_action filtered_methods do |controller|

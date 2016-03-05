@@ -1,4 +1,4 @@
-# Gnotifier - One Gem To Rule Them All.
+# AppfluxRuby
 ### Compatibility Notes:
 
 # Using `public_send`.

@@ -31,9 +31,9 @@
 #   }
 # }
 
-module Gnotifier
+module AppfluxRuby
   module MessageBuilders
-    class Bugflux < Gnotifier::MessageBuilders::Base
+    class Bugflux < AppfluxRuby::MessageBuilders::Base
 
       ENV_REQUEST_METHODS = %i( path host scheme user_agent port url ip
                                 content_type request_method referrer )
@@ -98,7 +98,7 @@ module Gnotifier
         end
 
         def add_app_id
-          @bugflux_notice[:app_id] = ::Gnotifier::Bugflux.config.app_id
+          @bugflux_notice[:app_id] = ::AppfluxRuby::Bugflux.config.app_id
         end
 
         def add_env
@@ -106,7 +106,7 @@ module Gnotifier
         end
 
         def add_custom_tabs
-          @bugflux_notice[:custom_tabs] = ::Gnotifier::Bugflux.additional_data
+          @bugflux_notice[:custom_tabs] = ::AppfluxRuby::Bugflux.additional_data
         end
 
         private

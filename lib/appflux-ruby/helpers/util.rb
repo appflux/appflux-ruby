@@ -1,4 +1,4 @@
-module Gnotifier
+module AppfluxRuby
   module Helpers
     class Util
 

@@ -1,4 +1,4 @@
-module Gnotifier
+module AppfluxRuby
   module MessageBuilders
     class Base
       def initialize exception, rack_env

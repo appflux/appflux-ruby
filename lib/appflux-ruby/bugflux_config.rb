@@ -5,7 +5,7 @@
 #
 # Also, it would be better to extract the notice sending logic to its own gem.
 # This is because all hook applications might not be on the same address.
-module Gnotifier
+module AppfluxRuby
   class BugfluxConfig
     ##
     # @return [ID] Identify the application where to send the notification.

@@ -1,6 +1,6 @@
 module Delayed
   module Plugins
-    class Gnotifier < ::Delayed::Plugin
+    class AppfluxRuby < ::Delayed::Plugin
       callbacks do |lifecycle|
         lifecycle.around(:invoke_job) do |job, *args, &block|
           begin
@@ -15,7 +15,7 @@ module Delayed
             if job.payload_object.respond_to?(:job_data)
               params[:active_job] = job.payload_object.job_data
             end
-            ::Gnotifier::BugfluxNotifier.notify(exception, params)
+            ::AppfluxRuby::BugfluxNotifier.notify(exception, params)
             raise exception
           end
         end
@@ -24,4 +24,4 @@ module Delayed
   end
 end
 
-Delayed::Worker.plugins << Delayed::Plugins::Gnotifier
+Delayed::Worker.plugins << Delayed::Plugins::AppfluxRuby

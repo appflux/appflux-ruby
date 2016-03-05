@@ -8,7 +8,7 @@
 #     }
 #   }
 # }
-module Gnotifier
+module AppfluxRuby
   module MessageBuilders
     class CustomMessage
       def initialize
@@ -17,7 +17,7 @@ module Gnotifier
 
       def add_tab(tab_name, options_data = {})
         # @custom_tabs << { "#{ tab_name }": options_data }
-        ::Gnotifier::Bugflux.additional_data[tab_name] = options_data
+        ::AppfluxRuby::Bugflux.additional_data[tab_name] = options_data
       end
     end
   end

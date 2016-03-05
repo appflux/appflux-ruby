@@ -6,7 +6,7 @@
 
 require 'typhoeus'
 
-module Gnotifier
+module AppfluxRuby
   class BugfluxNotifier
 
     class << self
@@ -18,9 +18,9 @@ module Gnotifier
       end
 
       def build_request exception, environment
-        notice = Gnotifier::MessageBuilders::Bugflux.new(exception, environment).build
-        request = Typhoeus::Request.new(
-          ::Gnotifier::Bugflux.config.host,
+        notice = ::AppfluxRuby::MessageBuilders::Bugflux.new(exception, environment).build
+        request = ::Typhoeus::Request.new(
+          ::AppfluxRuby::Bugflux.config.host,
           method: :post,
           body: notice,
           headers: { Accept: "text/html" }

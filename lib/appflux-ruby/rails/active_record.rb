@@ -1,4 +1,4 @@
-module Gnotifier
+module AppfluxRuby
   module Rails
     ##
     # ActiveRecord < 4.2 has a bug with regard to swallowing exceptions in the
@@ -28,7 +28,7 @@ module Gnotifier
         rescue Exception => ex
           # TODO: Need to replace with Logger.
           puts 'Sending exception notification to bugflux.'
-          ::Gnotifier::BugfluxNotifier.notify(ex)
+          ::AppfluxRuby::BugfluxNotifier.notify(ex)
           raise ex
         end
       end

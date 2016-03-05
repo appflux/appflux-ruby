@@ -1,3 +1,3 @@
-module Gnotifier
+module AppfluxRuby
   VERSION = '0.1.0'
 end
