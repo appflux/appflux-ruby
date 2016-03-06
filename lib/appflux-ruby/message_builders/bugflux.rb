@@ -19,6 +19,9 @@
 #       },
 #       headers: {
 
+#       },
+#       session: {
+
 #       }
 #     },
 #     exception: {
@@ -56,7 +59,7 @@ module AppfluxRuby
         add_exception_data
         add_env
         add_headers
-        # add_session_data
+        add_session_data
         add_custom_tabs
 
         @notice
