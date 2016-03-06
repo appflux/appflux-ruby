@@ -17,7 +17,7 @@
 #       params: {
 
 #       },
-#       session: {
+#       headers: {
 
 #       }
 #     },
@@ -55,7 +55,8 @@ module AppfluxRuby
         add_params
         add_exception_data
         add_env
-        add_session_data
+        add_headers
+        # add_session_data
         add_custom_tabs
 
         @notice
@@ -91,6 +92,16 @@ module AppfluxRuby
           return unless session_loaded?
 
           @bugflux_notice[:env][:session]= @request.env['rack.request.cookie_hash']
+        end
+
+        def add_headers
+          @bugflux_notice[:env][:headers] = Hash.new
+
+          @rack_env.keys.grep(/^HTTP_/).each do |_key|
+            @bugflux_notice[:env][:headers][_key] = @rack_env[_key]
+          end
+
+          @bugflux_notice[:env][:headers].delete('HTTP_COOKIE')
         end
 
         def add_params

@@ -3,6 +3,8 @@ module AppfluxRuby
     module ControllerMethods
       def self.included(base)
         base.extend ClassMethods
+        base.include InstanceMethods
+        base.before_bugflux_notify :__send_user_info_to_bugflux__
       end
 
       module ClassMethods
@@ -35,6 +37,19 @@ module AppfluxRuby
             
           end
 
+      end
+
+      module InstanceMethods
+        private
+          def __send_user_info_to_bugflux__ notifier_object
+            if respond_to?(:current_user) && current_user
+              notifier_object.add_tab('User',
+                { 'Current User Id': current_user.id,
+                  'User Attributes': current_user.inspect
+                }
+              )
+            end
+          end
       end
     end
   end
