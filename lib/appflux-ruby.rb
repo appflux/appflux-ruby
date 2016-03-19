@@ -15,7 +15,10 @@ if defined?(::Rack)
   end
 end
 
-require 'appflux-ruby/delayed_job/plugin' if defined?(::Delayed)
+if defined?(::Delayed)
+  require_relative 'appflux-ruby/delayed_job/plugin'
+  require_relative 'appflux-ruby/message_builders/delayed_job'
+end
 
 module AppfluxRuby
   class Bugflux

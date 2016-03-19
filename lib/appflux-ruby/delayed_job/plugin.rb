@@ -6,6 +6,7 @@ module Delayed
           begin
             block.call(job, *args)
           rescue Exception => exception
+            ::AppfluxRuby::Bugflux.initialize_additional_data
             params = job.as_json.merge(
               component: 'delayed_job',
               action: job.payload_object.class.name

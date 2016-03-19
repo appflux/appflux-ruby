@@ -44,6 +44,8 @@ module AppfluxRuby
 
       ENV_EXCEPTION_METHODS = %i( backtrace message cause class )
 
+      SUPPORTED_BACKGROUND_JOB_PROCESSORS = %w(delayed_job)
+
       def initialize exception, rack_env
         super(exception, rack_env)
 
@@ -60,6 +62,7 @@ module AppfluxRuby
         add_env
         add_headers
         add_session_data
+        add_background_job_info
         add_custom_tabs
 
         @notice
@@ -120,7 +123,19 @@ module AppfluxRuby
         end
 
         def add_custom_tabs
-          @bugflux_notice[:custom_tabs] = ::AppfluxRuby::Bugflux.additional_data
+          @bugflux_notice[:custom_tabs] ||= Hash.new
+          @bugflux_notice[:custom_tabs].merge(::AppfluxRuby::Bugflux.additional_data)
+        end
+
+        ## Adds background processor information as a dedicated tab on the UI.
+        def add_background_job_info
+          if @rack_env[:component].in?(SUPPORTED_BACKGROUND_JOB_PROCESSORS)
+            builder_klass_string = @rack_env[:component].classify#.constantize
+            builder_klass = "::AppfluxRuby::MessageBuilders::#{ builder_klass_string }".constantize
+
+            @bugflux_notice[:custom_tabs] ||= Hash.new
+            @bugflux_notice[:custom_tabs]["#{@rack_env[:component]}".to_sym] = builder_klass.to_hash(@rack_env)
+          end
         end
 
         private
