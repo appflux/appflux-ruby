@@ -16,6 +16,7 @@ module Delayed
             if job.payload_object.respond_to?(:job_data)
               params[:active_job] = job.payload_object.job_data
             end
+            puts 'Sending exception notification to bugflux.'
             ::AppfluxRuby::BugfluxNotifier.notify(exception, params)
             raise exception
           end
@@ -25,4 +26,4 @@ module Delayed
   end
 end
 
-Delayed::Worker.plugins << Delayed::Plugins::AppfluxRuby
+# Delayed::Worker.plugins << Delayed::Plugins::AppfluxRuby
