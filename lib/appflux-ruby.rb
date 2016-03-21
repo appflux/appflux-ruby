@@ -15,10 +15,8 @@ if defined?(::Rack)
   end
 end
 
-if defined?(::Delayed)
-  require_relative 'appflux-ruby/delayed_job/plugin'
-  require_relative 'appflux-ruby/message_builders/delayed_job'
-end
+## Requires library specific files in generators. See: generators/appflux_ruby/install_generator.
+## This is important to handle if appflux-ruby is present in Gemfile before Delayed Job.
 
 module AppfluxRuby
   class Bugflux

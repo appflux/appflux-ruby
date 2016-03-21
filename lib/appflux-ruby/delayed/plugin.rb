@@ -1,6 +1,6 @@
-module Delayed
-  module Plugins
-    class AppfluxRuby < ::Delayed::Plugin
+module AppfluxRuby
+  module Delayed
+    class Plugin < ::Delayed::Plugin
       callbacks do |lifecycle|
         lifecycle.around(:invoke_job) do |job, *args, &block|
           begin
