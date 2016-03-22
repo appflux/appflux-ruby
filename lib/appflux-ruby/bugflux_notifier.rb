@@ -13,8 +13,15 @@ module AppfluxRuby
 
       def notify exception, environment = Hash.new
         request = build_request(exception, environment)
-        request.run
-        # Support SSL
+        response = request.run
+
+        unless response.code == 200
+          if defined?(::Rails)
+            ::Rails.logger.fatal("[Bugflux-Failed] Failed to notify Bugflux, please check with your configuration in config/initializers/bugflux.rb. Error Code: #{ response.code }")
+          else
+            puts "[Bugflux-Failed] Failed to notify Bugflux, please check with your configuration in config/initializers/bugflux.rb. Error Code: #{ response.code }"
+          end
+        end
       end
 
       def build_request exception, environment
@@ -23,7 +30,7 @@ module AppfluxRuby
           ::AppfluxRuby::Bugflux.config.host,
           method: :post,
           body: notice,
-          headers: { Accept: "text/html" }
+          headers: { Accept: "application/json" }
           )
       end
     end
