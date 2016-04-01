@@ -124,7 +124,7 @@ module AppfluxRuby
 
         def add_custom_tabs
           @bugflux_notice[:custom_tabs] ||= Hash.new
-          @bugflux_notice[:custom_tabs].merge(::AppfluxRuby::Bugflux.additional_data)
+          @bugflux_notice[:custom_tabs].merge!(::AppfluxRuby::Bugflux.additional_data)
         end
 
         ## Adds background processor information as a dedicated tab on the UI.
