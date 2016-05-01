@@ -29,8 +29,8 @@ DESC
   spec.test_files    = `git ls-files -- test/*`.split("\n")
   spec.require_paths = ['lib']
 
-  spec.add_dependency             'typhoeus'
-  spec.add_development_dependency 'bundler'
+  spec.add_dependency             'typhoeus', '>= 0.7'
+  spec.add_development_dependency 'bundler', '~> 1.0'
   # spec.add_development_dependency 'rake'
   # spec.add_development_dependency 'minitest', '~> 5.0'
   # spec.add_development_dependency 'byebug', '~> 8.2'
