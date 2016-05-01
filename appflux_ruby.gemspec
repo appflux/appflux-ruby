@@ -1,16 +1,16 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'appflux-ruby/version'
+require 'appflux_ruby/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'appflux-ruby'
+  spec.name          = 'appflux_ruby'
   spec.version       = AppfluxRuby::VERSION
   spec.date          = Time.now.strftime('%Y-%m-%d')
   spec.authors       = ['Shubham Gupta']
   spec.email         = ['sgupta.89cse@gmail.com']
 
-  spec.summary       = 'Ruby library for integration with https://appflux.io'
+  spec.summary       = 'Ruby library for integration with http://appflux.io'
   spec.description   = <<DESC
 AppfluxRuby is a ruby library for integrating your rack based applications with
 https://appflux.io/bugflux. This gem provides a basic API for automatically and 
@@ -22,7 +22,7 @@ for any feature requests or bugs. For reporting security vulnerablities, please
 send an email at sgupta.89cse@gmail.com
 DESC
 
-  spec.homepage      = 'https://appflux.io'
+  spec.homepage      = 'http://appflux.io'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files`.split("\n")
