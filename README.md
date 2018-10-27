@@ -22,17 +22,17 @@ The appflux-ruby gem sends notifications when an exception occurs in your Rack/R
 
 
 ## Setup
->> Appflux is free.
+> Appflux is free.
 1. Sign up on appflux.io.
 2. Confirm your account and create a project.
 3. Follow the instructions on the setup page.
 
-## What's more?
+## What's more ?
 Appflux offers an integrated platform to monitor, analyze and discuss your ruby application. You can:
 1. Get notified of exceptions in real-time.
 2. Post messages and discuss issues with other collaborators.
 
-## What's cooking
+## What's cookin' ?
 1. Support for out-of-the-box user behavior analysis for Rails applications.
 2. Cohort analysis for Rails applications.
 
@@ -43,4 +43,4 @@ Appflux offers an integrated platform to monitor, analyze and discuss your ruby 
 
 ## License
 
-The Appflux ruby gem is a free software released under the MIT License. See LICENSE.txt for details.
+The Appflux ruby gem is a free software released under the MIT License. See [LICENSE.txt](https://github.com/appflux/appflux-ruby/blob/master/LICENSE.txt) for details.
