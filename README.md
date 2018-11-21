@@ -5,15 +5,15 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/64eff633689a54b902cf/maintainability)](https://codeclimate.com/github/appflux/appflux-ruby/maintainability)
 
 
-The appflux-ruby gem sends notifications when an exception occurs in your Rack/Rails application. The community edition integrates nicely with your appflux.io dashboard.
+The appflux-ruby gem sends notifications when an exception occurs in your Rack/Rails application. The community edition integrates nicely with your appflux.io dashboard. We also offer an enterprise version that also offers a project communication platform.
 
 ## Features
 1. Automatically reports unhandled exceptions.
 2. Reports handled exceptions.
 3. Automagically supports Delayed Job and Sidekiq.
-4. Figures out common information used to debug Rails code.
+4. Figures out common information used to debug a Rails application.
 5. Send custom diagnostic information.
-6. Nicely integrates with Appflux.io.
+6. Nicely integrates with your Appflux.io dashboard.
 
 
 ## Requirements
@@ -22,7 +22,7 @@ The appflux-ruby gem sends notifications when an exception occurs in your Rack/R
 
 
 ## Setup
-> Appflux is free.
+> Appflux is free. Basic error monitoring will always remain free.
 1. Sign up on appflux.io.
 2. Confirm your account and create a project.
 3. Follow the instructions on the setup page.
@@ -31,6 +31,7 @@ The appflux-ruby gem sends notifications when an exception occurs in your Rack/R
 Appflux offers an integrated platform to monitor, analyze and discuss your ruby application. You can:
 1. Get notified of exceptions in real-time.
 2. Post messages and discuss issues with other collaborators.
+3. Maintain all project related files in one location.
 
 ## What's cookin' ?
 1. Support for out-of-the-box user behavior analysis for Rails applications.
@@ -39,7 +40,8 @@ Appflux offers an integrated platform to monitor, analyze and discuss your ruby 
 
 ## Help
 1. hi@appflux.io
-2. [@appfluxhq](https://www.twitter.com/appfluxhq)
+2. [@_guptashubham](https://twitter.com/_guptashubham)
+3. [@appfluxhq](https://www.twitter.com/appfluxhq)
 
 ## License
 
