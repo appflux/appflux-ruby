@@ -2,7 +2,7 @@
 
 ---
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/64eff633689a54b902cf/maintainability)](https://codeclimate.com/github/appflux/appflux-ruby/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/64eff633689a54b902cf/maintainability)](https://codeclimate.com/github/appflux/appflux-ruby/maintainability) [![Gem Version](https://badge.fury.io/rb/appflux_ruby.svg)](https://badge.fury.io/rb/appflux_ruby)
 
 
 The appflux-ruby gem sends notifications when an exception occurs in your Rack/Rails application. The community edition integrates nicely with your appflux.io dashboard. We also offer an enterprise version that also offers a project communication platform.
