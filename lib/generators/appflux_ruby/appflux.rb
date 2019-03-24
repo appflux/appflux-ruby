@@ -1,5 +1,6 @@
 AppfluxRuby::Bugflux.configure do |config|
   config.app_id = '<your-app-id>'
+  config.ignored_environments = %w( test development )
 end
 
 if defined?(::Delayed)

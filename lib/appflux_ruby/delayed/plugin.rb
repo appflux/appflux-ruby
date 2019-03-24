@@ -16,7 +16,6 @@ module AppfluxRuby
             if job.payload_object.respond_to?(:job_data)
               params[:active_job] = job.payload_object.job_data
             end
-            puts 'Sending exception notification to bugflux.'
             ::AppfluxRuby::BugfluxNotifier.notify(exception, params)
             raise exception
           end

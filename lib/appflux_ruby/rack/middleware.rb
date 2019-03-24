@@ -13,7 +13,6 @@ module AppfluxRuby
           response = @app.call(env)
         rescue Exception => ex
           # TODO: Need to figure out a logger implementation.
-          puts 'Sending exception notification to bugflux.'
           ::AppfluxRuby::BugfluxNotifier.notify(ex, env)
           raise ex
         end

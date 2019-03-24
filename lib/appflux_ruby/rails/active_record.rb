@@ -27,7 +27,6 @@ module AppfluxRuby
           super
         rescue Exception => ex
           # TODO: Need to replace with Logger.
-          puts 'Sending exception notification to bugflux.'
           ::AppfluxRuby::BugfluxNotifier.notify(ex)
           raise ex
         end

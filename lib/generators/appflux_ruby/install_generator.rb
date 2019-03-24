@@ -3,7 +3,7 @@ module AppfluxRuby
     source_root File.expand_path("../", __FILE__)
 
     def create_bugflux_initializer
-      copy_file 'bugflux.rb', 'config/initializers/bugflux.rb'
+      copy_file 'appflux.rb', 'config/initializers/appflux.rb'
     end
 
   end
