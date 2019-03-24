@@ -10,7 +10,7 @@ module AppfluxRuby
     ##
     # @return [ID] Identify the application where to send the notification.
     # This value *must* be set.
-    attr_accessor :app_id
+    attr_accessor :app_id, :ignored_environments
 
     ##
     # @return [Logger] the default logger used for debug output

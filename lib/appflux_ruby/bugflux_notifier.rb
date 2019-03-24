@@ -12,19 +12,24 @@ module AppfluxRuby
     class << self
 
       def notify exception, environment = Hash.new
-        request = build_request(exception, environment)
-        response = request.run
+        if should_report_exception?
+          ::Rails.logger.info('Notifying Appflux of this exception.')
+          request = build_request(exception, environment)
+          response = request.run
 
-        unless response.code == 200
-          if defined?(::Rails)
-            ::Rails.logger.fatal("[Bugflux-Failed] Failed to notify Bugflux, please check with your configuration in config/initializers/bugflux.rb. Error Code: #{ response.code }")
-          else
-            puts "[Bugflux-Failed] Failed to notify Bugflux, please check with your configuration in config/initializers/bugflux.rb. Error Code: #{ response.code }"
+          unless response.code == 200
+            if defined?(::Rails)
+              ::Rails.logger.fatal("[Appflux-Failed] Failed to notify Appflux, please check with your configuration in config/initializers/appflux.rb. Error Code: #{ response.code }")
+            else
+              puts "[Appflux-Failed] Failed to notify Appflux, please check with your configuration in config/initializers/appflux.rb. Error Code: #{ response.code }"
+            end
           end
+        else
+          ::Rails.logger.info("[Appflux] Skipping to notify Appflux for #{ ::Rails.env } environment.")
         end
       end
 
-      def build_request exception, environment
+      private def build_request exception, environment
         notice = ::AppfluxRuby::MessageBuilders::Bugflux.new(exception, environment).build
         request = ::Typhoeus::Request.new(
           ::AppfluxRuby::Bugflux.config.host,
@@ -32,6 +37,10 @@ module AppfluxRuby
           body: notice,
           headers: { Accept: "application/json" }
           )
+      end
+
+      private def should_report_exception?
+        !AppfluxRuby::Bugflux.config.ignored_environments.include?(::Rails.env)
       end
     end
   end
