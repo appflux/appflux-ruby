@@ -44,8 +44,11 @@ module AppfluxRuby
           def __send_user_info_to_bugflux__ notifier_object
             if respond_to?(:current_user) && current_user
               notifier_object.add_tab('User',
-                { 'Current User Id': current_user.id,
-                  'User Attributes': current_user.inspect
+                {
+                  id: current_user.id,
+                  type: current_user.class.name,
+                  name: current_user.name,
+                  email: current_user.email
                 }
               )
             end
