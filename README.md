@@ -1,42 +1,40 @@
 # Appflux Ruby
-
 ---
-
 [![Maintainability](https://api.codeclimate.com/v1/badges/64eff633689a54b902cf/maintainability)](https://codeclimate.com/github/appflux/appflux-ruby/maintainability) [![Gem Version](https://badge.fury.io/rb/appflux_ruby.svg)](https://badge.fury.io/rb/appflux_ruby)
 
+Appflux is an exception notification library for Rack/Rails application. It is extremely lightweight, easy to setup and always free. Signup on appflux.io, create a project and find your keys to setup your application. The exceptions are delivered to your email as well as can be seen on the dashboard. Appflux also offers a simple and classic messaging platform.
 
-The appflux-ruby gem sends notifications when an exception occurs in your Rack/Rails application. The community edition integrates nicely with your appflux.io dashboard. We also offer an enterprise version that also offers a project communication platform.
+## Why do we need another exception notification library?
+1. While [exception_notification](https://github.com/smartinez87/exception_notification) is a good open source library, it is really painful to setup. The notification messages are very verbose and often spam the inbox. And... it does not come with a GUI. Appflux offers a decent simplistic dashboard that most open source solutions lack.
+2. There are a lot of very good commercial exception notification softwares out there. But they are more focussed on managers, not developers.
 
-## Features
+## Some Features
 1. Automatically reports unhandled exceptions.
 2. Reports handled exceptions.
 3. Automagically supports Delayed Job and Sidekiq.
-4. Figures out common information used to debug a Rails application.
+4. Figures out common information (from commonly used gems) used to debug a Rails application.
 5. Send custom diagnostic information.
-6. Nicely integrates with your Appflux.io dashboard.
-
+6. Nicely integrates with Appflux.io dashboard.
 
 ## Requirements
 1. Ruby 1.9.3 or greater
 2. Rails 3.0 or greater, Grape, Sinatra or any other Rack application.
 
-
 ## Setup
-> Appflux is free. Basic error monitoring will always remain free.
+> If you have more than one project, you should first create an organization.
 1. Sign up on appflux.io.
 2. Confirm your account and create a project.
 3. Follow the instructions on the setup page.
 
 ## What's more ?
 Appflux offers an integrated platform to monitor, analyze and discuss your ruby application. You can:
-1. Get notified of exceptions in real-time.
-2. Post messages and discuss issues with other collaborators.
-3. Maintain all project related files in one location.
+1. Get notified of exceptions.
+2. Post messages and discuss issues with other collaborators and clients.
+3. Keeps all project related files.
 
 ## What's cookin' ?
 1. Support for out-of-the-box user behavior analysis for Rails applications.
 2. Cohort analysis for Rails applications.
-
 
 ## Help
 1. hi@appflux.io
