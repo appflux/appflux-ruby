@@ -44,7 +44,7 @@ module AppfluxRuby
 
       ENV_EXCEPTION_METHODS = %i( backtrace message cause class )
 
-      SUPPORTED_BACKGROUND_JOB_PROCESSORS = %w(delayed_job)
+      SUPPORTED_BACKGROUND_JOB_PROCESSORS = %w(delayed_job sidekiq)
 
       def initialize exception, rack_env
         super(exception, rack_env)
@@ -130,7 +130,7 @@ module AppfluxRuby
         ## Adds background processor information as a dedicated tab on the UI.
         def add_background_job_info
           if @rack_env[:component].in?(SUPPORTED_BACKGROUND_JOB_PROCESSORS)
-            builder_klass_string = @rack_env[:component].classify#.constantize
+            builder_klass_string = @rack_env[:component].classify
             builder_klass = "::AppfluxRuby::MessageBuilders::#{ builder_klass_string }".constantize
 
             @bugflux_notice[:custom_tabs] ||= Hash.new

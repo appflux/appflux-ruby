@@ -9,3 +9,15 @@ if defined?(::Delayed)
 
   Delayed::Worker.plugins << ::AppfluxRuby::Delayed::Plugin
 end
+
+if defined?(::Sidekiq)
+  require 'appflux_ruby/sidekiq/error_handler'
+  require 'appflux_ruby/message_builders/sidekiq'
+
+  Sidekiq.configure_server do |config|
+    config.server_middleware do |chain|
+      chain.add(AppfluxRuby::Sidekiq::ErrorHandler)
+    end
+  end
+
+end
