@@ -10,7 +10,6 @@ module AppfluxRuby
       module ClassMethods
         def before_bugflux_notify(*methods)
           run_bugflux_callbacks(methods) do
-
           end
         end
 
@@ -34,9 +33,7 @@ module AppfluxRuby
                 end
               end
             end
-            
           end
-
       end
 
       module InstanceMethods
@@ -47,8 +44,8 @@ module AppfluxRuby
                 {
                   id: current_user.id,
                   type: current_user.class.name,
-                  name: current_user.name,
-                  email: current_user.email
+                  name: current_user.try(:name),
+                  email: current_user.try(:email)
                 }
               )
             end
