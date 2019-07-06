@@ -2,7 +2,7 @@ module AppfluxRuby
   module Rails
     class Railtie < ::Rails::Railtie
       initializer('appflux_ruby.middleware') do |app|
-        if ::Rails.version =~ /\A5\./
+        if ::Rails.version =~ /\A5\./ || ::Rails.version =~ /\A6\./
           app.config.middleware.insert_after(
             ActionDispatch::DebugExceptions, AppfluxRuby::Rack::Middleware
           )
